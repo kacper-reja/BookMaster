@@ -3,18 +3,21 @@ import React from 'react'
 
 interface TextInputProps {
   isPassword: boolean
-  onChange: () => void
+  onChange?: (e: string) => void
+  text?: string
 }
 
 export const TextInput: React.FC<TextInputProps> = ({
   isPassword,
   onChange,
+  text,
 }) => {
   return (
     <RnTextInput
       secureTextEntry={isPassword}
       style={styles.textInput}
-      onChange={onChange}
+      onChangeText={onChange}
+      value={text}
     />
   )
 }

@@ -21,16 +21,16 @@ export const Button: React.FC<ButtonProps> = ({
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#ababab',
+    backgroundColor: '#FDFDFD',
     borderWidth: 2,
-    borderColor: '#000',
+    borderColor: '#d66318',
     borderRadius: 5,
     width: 100,
     alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
-    color: '#000',
+    color: '#d66318',
     fontWeight: 'bold',
     padding: 4,
   },

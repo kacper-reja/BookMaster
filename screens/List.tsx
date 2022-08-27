@@ -1,45 +1,41 @@
 import { View, Text, StyleSheet, FlatList, SafeAreaView } from 'react-native'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { ListItem } from '../components/ListItem'
+import { useGetAllBooksQuery } from '../api'
+import AsyncStorage from '@react-native-async-storage/async-storage/'
 
-const DATA = [
-  {
-    title: 'Wiedzmin',
-    author: 'Sapcio',
-    date: '2142142342342',
-  },
-  {
-    title: 'Wiedzmin',
-    author: 'Sapcio',
-    date: '2142142342342',
-  },
-  {
-    title: 'Wiedzmin',
-    author: 'Sapcio',
-    date: '2142142342342',
-  },
-  {
-    title: 'Wiedzmin',
-    author: 'Sapcio',
-    date: '2142142342342',
-  },
-  {
-    title: 'Wiedzmin',
-    author: 'Sapcio',
-    date: '2142142342342',
-  },
-]
+interface IData {
+  _id: string
+  title: string
+  author: string
+  release_date: string
+}
 
 export default function List() {
-  return (
-    <FlatList
-      style={{ width: '100%', padding: 5 }}
-      data={DATA}
-      renderItem={({ item }) => (
-        <ListItem title={item.title} author={item.author} date={item.date} />
-      )}
-    ></FlatList>
-  )
+  const [token, setToken] = useState('')
+  const { data, isLoading, isError } = useGetAllBooksQuery(token, token !== '')
+  const parsedData =
+    data &&
+    ((data as any).books as IData[]).map((item) => ({
+      title: item.title,
+      _id: item._id,
+    }))
+  useEffect(() => {
+    ;(async () => {
+      const t = await AsyncStorage.getItem('token')
+      setToken(t ?? '')
+    })()
+  }, [])
+  if (!isLoading) {
+    return (
+      <FlatList
+        style={{ width: '100%', padding: 5 }}
+        data={(parsedData as any[]) ?? []}
+        renderItem={({ item }) => <ListItem title={item.title} id={item._id} />}
+      ></FlatList>
+    )
+  }
+  return <Text>Loading</Text>
 }
 
 const styles = StyleSheet.create({
