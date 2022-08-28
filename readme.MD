@@ -17,17 +17,17 @@ App was created using following libraries:
 # Usage
 
 Register:
-![alt text](https://github.com/kacper-reja/BookMaster/tree/main/resources/register.gif)<br/>
+![alt text](https://github.com/kacper-reja/BookMaster/blob/master/resources/register.gif)<br/>
 Login:
-![alt text](https://github.com/kacper-reja/BookMaster/tree/main/resources/login.gif)<br/>
+![alt text](https://github.com/kacper-reja/BookMaster/blob/master/resources/login.gif)<br/>
 Add book:
-![alt text](https://github.com/kacper-reja/BookMaster/tree/main/resources/add.git)<br/>
+![alt text](https://github.com/kacper-reja/BookMaster/blob/master/resources/add.git)<br/>
 Edit book:
-![alt text](https://github.com/kacper-reja/BookMaster/tree/main/resources/edit.gif)<br/>
+![alt text](https://github.com/kacper-reja/BookMaster/blob/master/resources/edit.gif)<br/>
 Delete book:
-![alt text](https://github.com/kacper-reja/BookMaster/tree/main/resources/delete.gif)<br/>
+![alt text](https://github.com/kacper-reja/BookMaster/blob/master/resources/delete.gif)<br/>
 Logout:
-![alt text](https://github.com/kacper-reja/BookMaster/tree/main/resources/logout.gif)<br/>
+![alt text](https://github.com/kacper-reja/BookMaster/blob/master/resources/logout.gif)<br/>
 
 # API's Documentation
 
