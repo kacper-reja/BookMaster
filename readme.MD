@@ -1,9 +1,36 @@
-# TODO
+# BookMaster
 
-- Podpiecie react-query:
-  - Owrapowanie aplikacji w providera
-  - Stworzenie instancji query clienta i przekazanie jej do providera
-  - stworzenie struktury projektu pod api
-- Wyrenderowac conditionally nowy formularz lub formularz z populated data
-- W przypadku klikniecia w jakis item, na nowo powinny byc zaciagniete detale ksiazki
-- Dodać kolejna zakladke w tabbarze o nazwie ustawienia i przycisk wyloguj w niej
+Application created with React Native capable of performing CRUD operations on list of books.
+
+# Technologies
+
+App was created using following libraries:
+
+- axios version: 0.27.2
+- expo version 46.0.9
+- react-dom version: 18.0.0
+- react-native version: 0.69.4
+- react-query version: 3.39.2
+- react-router-dom version: 5.2.0
+- react-navigation version: 4.4.4
+
+# Usage
+
+Register:
+![alt text](https://github.com/kacper-reja/Android-Stuido---DogShelterApp/blob/master/resources/register.gif)<br/>
+Login:
+![alt text](https://github.com/kacper-reja/Android-Stuido---DogShelterApp/blob/master/resources/login.gif)<br/>
+Add book:
+![alt text](https://github.com/kacper-reja/Android-Stuido---DogShelterApp/blob/master/resources/add.gif)<br/>
+Edit book:
+![alt text](https://github.com/kacper-reja/Android-Stuido---DogShelterApp/blob/master/resources/edit.gif)<br/>
+Delete book:
+![alt text](https://github.com/kacper-reja/Android-Stuido---DogShelterApp/blob/master/resources/delete.gif)<br/>
+Logout:
+![alt text](https://github.com/kacper-reja/Android-Stuido---DogShelterApp/blob/master/resources/logout.gif)<br/>
+
+# API's Documentation
+
+```
+https://github.com/jakub-jarzabek/next-book-api
+```

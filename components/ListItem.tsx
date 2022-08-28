@@ -14,12 +14,12 @@ export const ListItem: React.FC<ListItemProps> = ({ title, id }) => {
       <Button
         externalStyles={styles.button}
         btnTitle={title}
-        onPress={() =>
+        onPress={() => {
           push('Auth', {
             screen: 'Form',
             params: { _id: id },
           })
-        }
+        }}
       />
       <Chevron />
     </View>

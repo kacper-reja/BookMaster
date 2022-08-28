@@ -1,4 +1,13 @@
-import { Image, StyleSheet, View, Text } from 'react-native'
+import {
+  Image,
+  StyleSheet,
+  View,
+  Text,
+  KeyboardAvoidingView,
+  Keyboard,
+  Platform,
+  TouchableWithoutFeedback,
+} from 'react-native'
 import { Button } from '../components/Button'
 import { TextInput } from '../components/TextInput'
 import { push } from '../App'
@@ -49,31 +58,39 @@ export default function Login({ setIsAuthorized }: LoginProps) {
   }
 
   return (
-    <View style={styles.container}>
-      <Image
-        style={styles.image}
-        source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
-      />
-      <View style={styles.loginWrapper}>
-        <Text style={styles.text}>Nazwa użytkownika</Text>
-        <TextInput isPassword={false} onChange={(e) => setLogin(e)} />
-        <Text style={styles.text}>Hasło</Text>
-        <TextInput isPassword={true} onChange={(e) => setPassword(e)} />
-        <Text
-          style={styles.register}
-          onPress={() => {
-            push('Register')
-          }}
-        >
-          Stwórz konto
-        </Text>
+    <KeyboardAvoidingView
+      style={styles.container}
+      contentContainerStyle={styles.container}
+      behavior={'position'}
+    >
+      <View>
+        <Image
+          style={styles.image}
+          source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
+        />
+
+        <View style={styles.loginWrapper}>
+          <Text style={styles.text}>Nazwa użytkownika</Text>
+          <TextInput isPassword={false} onChange={(e) => setLogin(e)} />
+          <Text style={styles.text}>Hasło</Text>
+          <TextInput isPassword={true} onChange={(e) => setPassword(e)} />
+          <Text
+            style={styles.register}
+            onPress={() => {
+              push('Register')
+            }}
+          >
+            Stwórz konto
+          </Text>
+        </View>
+
+        <Button
+          externalStyles={styles.button}
+          btnTitle="Zaloguj"
+          onPress={handleLogin}
+        ></Button>
       </View>
-      <Button
-        externalStyles={styles.button}
-        btnTitle="Zaloguj"
-        onPress={handleLogin}
-      ></Button>
-    </View>
+    </KeyboardAvoidingView>
   )
 }
 
@@ -86,6 +103,8 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: 'bold',
     justifyContent: 'center',
+    alignSelf: 'flex-start',
+    marginLeft: 25,
   },
   image: {
     width: 200,
@@ -94,12 +113,15 @@ const styles = StyleSheet.create({
   },
   loginWrapper: {
     marginTop: 90,
+    alignItems: 'center',
   },
   button: {
     marginTop: 60,
+    alignSelf: 'center',
   },
   register: {
     color: '#d66318',
-    textAlign: 'right',
+    alignSelf: 'flex-end',
+    paddingRight: 30,
   },
 })

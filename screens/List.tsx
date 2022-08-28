@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, FlatList, SafeAreaView } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { ListItem } from '../components/ListItem'
 import { useGetAllBooksQuery } from '../api'
 import AsyncStorage from '@react-native-async-storage/async-storage/'
@@ -14,6 +14,7 @@ interface IData {
 export default function List() {
   const [token, setToken] = useState('')
   const { data, isLoading, isError } = useGetAllBooksQuery(token, token !== '')
+  const [, updateState] = useState<undefined>()
   const parsedData =
     data &&
     ((data as any).books as IData[]).map((item) => ({
@@ -26,6 +27,7 @@ export default function List() {
       setToken(t ?? '')
     })()
   }, [])
+
   if (!isLoading) {
     return (
       <FlatList

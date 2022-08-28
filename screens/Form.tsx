@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, KeyboardAvoidingView } from 'react-native'
 import { useEffect, useState } from 'react'
 import { TextInput } from '../components/TextInput'
 import { Button } from '../components/Button'
@@ -61,10 +61,16 @@ export default function Form({ route }: FormProps) {
   const handleAdd = async () => {
     await mutate(
       (x: any) => {
-        console.log(x)
+        Toast.show({
+          type: 'success',
+          text1: 'Pomyślnie dodano książkę :)',
+        })
       },
       (y: any) => {
-        console.log(y)
+        Toast.show({
+          type: 'error',
+          text1: 'Coś poszło nie tak :(',
+        })
       }
     )
   }
@@ -82,7 +88,7 @@ export default function Form({ route }: FormProps) {
     )
   }
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container} behavior={'height'}>
       <View>
         <Text>Nazwa</Text>
         <TextInput
@@ -121,7 +127,7 @@ export default function Form({ route }: FormProps) {
           />
         )}
       </View>
-    </View>
+    </KeyboardAvoidingView>
   )
 }
 const styles = StyleSheet.create({

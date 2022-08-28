@@ -26,7 +26,11 @@ export const push = (screen: string, params?: any) => {
   }
 }
 
-function Auth() {
+interface AuthProps {
+  setIsAuthorized: (isAuthorized: boolean) => void
+}
+
+function Auth({ setIsAuthorized }: AuthProps) {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -36,7 +40,11 @@ function Auth() {
     >
       <Tab.Screen name="List" component={List} />
       <Tab.Screen name="Form" component={Form} />
-      <Tab.Screen name="Settings" component={Settings} />
+      <Tab.Screen name="Settings">
+        {(props: any) => (
+          <Settings {...props} setIsAuthorized={setIsAuthorized} />
+        )}
+      </Tab.Screen>
     </Tab.Navigator>
   )
 }
@@ -50,11 +58,11 @@ export default function App() {
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
           {isAuthorized ? (
-            <Stack.Screen
-              name="Auth"
-              component={Auth}
-              options={{ headerShown: false }}
-            />
+            <Stack.Screen name="Auth" options={{ headerShown: false }}>
+              {(props: any) => (
+                <Auth {...props} setIsAuthorized={setIsAuthorized} />
+              )}
+            </Stack.Screen>
           ) : (
             <>
               <Stack.Screen name="Login">

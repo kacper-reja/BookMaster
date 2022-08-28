@@ -4,10 +4,16 @@ import { Button } from '../components/Button'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { push } from '../App'
 
-const handleSignOut = async () => {
-  await AsyncStorage.removeItem('token')
+interface SettingsProps {
+  setIsAuthorized: (isAuthorized: boolean) => void
 }
-export default function Settings() {
+
+export default function Settings({ setIsAuthorized }: SettingsProps) {
+  const handleSignOut = async () => {
+    await AsyncStorage.removeItem('token')
+    setIsAuthorized(false)
+  }
+
   return (
     <View>
       <Button
